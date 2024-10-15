@@ -1,23 +1,11 @@
 #!/bin/sh
-cd $_CONDOR_SCRATCH_DIR
-export PATH=.:$PATH
-export ADTMP1=.
-
-# Nicholas Ducharme-Barth
-# 24/11/2020
-# 2017 SWPO sworfish (single-sex, two-region) diagnostic case model
-# The doitall file has been tidied up, with redundant, duplicate, and erroneous flag settings removed
-
-MFCL=./mfclo64
-FRQ=swo.frq
-INI=swo.ini
 
 #  ------------------------
 #  PHASE 0 - create initial par file
 #  ------------------------
 #
 if [ ! -f 00.par ]; then
-  $MFCL $FRQ $INI  00.par -makepar
+mfclo64 swo.frq swo.ini 00.par -makepar
 exit
 fi
 
@@ -26,7 +14,7 @@ fi
 #  ------------------------
 #
 if [ ! -f 01.par ]; then
-  $MFCL  $FRQ 00.par 01.par -file - <<PHASE1
+mfclo64 swo.frq 00.par 01.par -file - <<PHASE1
 # Set control phase: keep growth parameters fixed use
       1 32 6
       1 16 1          # estimate scalar of length dependent SD
@@ -164,7 +152,7 @@ fi
 #   PHASE 2
 #  ---------
 if [ ! -f 02.par ]; then
-  $MFCL $FRQ 01.par 02.par -file - <<PHASE2
+mfclo64 swo.frq 01.par 02.par -file - <<PHASE2
   1 1 1000        # set max. number of function evaluations per phase to 1000
   1 50 -2         # set convergence criterion to 1E-02
   2 113 0         # scaling init pop - turned off
@@ -186,7 +174,7 @@ fi
 #   PHASE 3
 #  ---------
 if [ ! -f 03.par ]; then
-  $MFCL $FRQ 02.par 03.par -file - <<PHASE3
+mfclo64 swo.frq 02.par 03.par -file - <<PHASE3
   2 70 1          # activate parameters for time series variability in regional recruitment distribution
   2 71 1          # estimation of temporal changes in recruitment distribution
   2 110 50        # set penalty for recruitment deviates
@@ -200,7 +188,7 @@ fi
 #   PHASE 4
 #  ---------
 if [ ! -f 04.par ]; then
-  $MFCL $FRQ 03.par 04.par -file - <<PHASE4
+mfclo64 swo.frq 03.par 04.par -file - <<PHASE4
   2 68 0          # do not estimate movement
    -14 45 100000
    -15 45 100000
@@ -212,7 +200,7 @@ fi
 #   PHASE 5
 #  ---------
 if [ ! -f 05.par ]; then
-  $MFCL $FRQ 04.par 05.par -file - <<PHASE5
+mfclo64 swo.frq 04.par 05.par -file - <<PHASE5
   -999 27 0       # estimate seasonal catchability for all fisheries
    -14 27 1
    -15 27 1
@@ -224,7 +212,7 @@ fi
 #   PHASE 6
 #  ---------
 if [ ! -f 06.par ]; then
-  $MFCL $FRQ 05.par 06.par -file - <<PHASE6
+mfclo64 swo.frq 05.par 06.par -file - <<PHASE6
   -999 10 0       # Do not estimate time-varying catchability
 PHASE6
 exit
@@ -233,7 +221,7 @@ fi
 #   PHASE 7
 #  ---------
 if [ ! -f 07.par ]; then
-  $MFCL $FRQ 06.par 07.par -file - <<PHASE7
+mfclo64 swo.frq 06.par 07.par -file - <<PHASE7
 # Estimate average proportion of recruitment coming from each region
   -100000 1 1
   -100000 2 1
@@ -245,7 +233,7 @@ fi
 #   PHASE 8
 #  ---------
 if [ ! -f 08.par ]; then
-  $MFCL $FRQ 07.par 08.par -file - <<PHASE8
+mfclo64 swo.frq 07.par 08.par -file - <<PHASE8
   1 1 8000       # set max. number of function evaluations per phase to 8000
   1 50 -3        # convergence criteria of 10^-3
   2 145 2        # define penalty weight on fit to SRR
@@ -273,7 +261,7 @@ fi
 #   PHASE 9
 # ------------
 if [ ! -f 09.par ]; then
-  $MFCL $FRQ 08.par 09.par -file - <<PHASE9
+mfclo64 swo.frq 08.par 09.par -file - <<PHASE9
   1 1 10000 # In crease maximum function evaluation to 10000
   1 50 -6        # modify convergence criteria from this phase
 PHASE9
@@ -286,7 +274,7 @@ fi
 #   PHASE 10
 # ------------
 if [ ! -f 10.par ]; then
-  $MFCL $FRQ 09.par 10.par -file - <<PHASE10
+mfclo64 swo.frq 09.par 10.par -file - <<PHASE10
   1 1 10000 # In crease maximum function evaluation to 10000
   1 50 -6        # modify convergence criteria from this phase
 PHASE10
@@ -298,7 +286,7 @@ fi
 #   PHASE 11
 # ------------
 if [ ! -f 11.par ]; then
-  $MFCL $FRQ 10.par 11.par -file - <<PHASE11
+mfclo64 swo.frq 10.par 11.par -file - <<PHASE11
   1 1 10000 # In crease maximum function evaluation to 10000
   1 50 -6        # modify convergence criteria from this phase
 PHASE11
@@ -310,7 +298,7 @@ fi
 #   PHASE 12
 # ------------
 if [ ! -f 12.par ]; then
-  $MFCL $FRQ 11.par 12.par -file - <<PHASE12
+mfclo64 swo.frq 11.par 12.par -file - <<PHASE12
   1 1 10000 # In crease maximum function evaluation to 10000
   1 50 -6        # modify convergence criteria from this phase
 PHASE12
@@ -322,7 +310,7 @@ fi
 #   PHASE 13
 # ------------
 if [ ! -f 13.par ]; then
-  $MFCL $FRQ 12.par 13.par -file - <<PHASE13
+mfclo64 swo.frq 12.par 13.par -file - <<PHASE13
   1 1 10000 # In crease maximum function evaluation to 10000
   1 50 -6        # modify convergence criteria from this phase
 PHASE13
@@ -334,7 +322,7 @@ fi
 #   PHASE 14
 # ------------
 if [ ! -f 14.par ]; then
-  $MFCL $FRQ 13.par 14.par -file - <<PHASE14
+mfclo64 swo.frq 13.par 14.par -file - <<PHASE14
   1 1 10000 # In crease maximum function evaluation to 10000
   1 50 -6        # modify convergence criteria from this phase
 PHASE14
@@ -346,7 +334,7 @@ fi
 #   PHASE 15
 # ------------
 if [ ! -f 15.par ]; then
-  $MFCL $FRQ 14.par 15.par -file - <<PHASE15
+mfclo64 swo.frq 14.par 15.par -file - <<PHASE15
   1 1 10000 # In crease maximum function evaluation to 10000
   1 50 -6        # modify convergence criteria from this phase
 PHASE15
@@ -358,7 +346,7 @@ fi
 #   PHASE 16
 # ------------
 if [ ! -f 16.par ]; then
-  $MFCL $FRQ 15.par 16.par -file - <<PHASE16
+mfclo64 swo.frq 15.par 16.par -file - <<PHASE16
   1 1 10000 # In crease maximum function evaluation to 10000
   1 50 -6        # modify convergence criteria from this phase
 PHASE16
@@ -369,9 +357,9 @@ fi
 #   PHASE 17
 # ------------
 if [ ! -f junk ]; then
-  $MFCL $FRQ 16.par junk -switch 2 1 1 1 1 145 3
-  $MFCL $FRQ 16.par junk -switch 2 1 1 1 1 145 4
-  $MFCL $FRQ 16.par junk -switch 2 1 1 1 1 145 5
-  rm junk plot-junk.rep
+mfclo64 swo.frq 16.par junk -switch 2 1 1 1 1 145 3
+mfclo64 swo.frq 16.par junk -switch 2 1 1 1 1 145 4
+mfclo64 swo.frq 16.par junk -switch 2 1 1 1 1 145 5
+rm junk plot-junk.rep
 exit
 fi
