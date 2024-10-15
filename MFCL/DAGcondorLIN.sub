@@ -1,0 +1,27 @@
+universe = vanilla
+# R always runs in the vanilla universe - (the other option is the standard universe)
+executable = mfcl.$$(Arch).$$(OpSys).bat
+getenv = false
+error = $(Cluster).$(Process).condor_mfcl.err
+log = $(Cluster).$(Process).condor_mfcl.log
+output = $(Cluster).$(Process).condor_mfcl.out
+#notify_user=
+should_transfer_files = YES
+
+requirements = ((Realm == "NOU") && (OpSys == "LINUX") && (Machine =!= "NOUOFPCALC02.corp.spc.int") && (Machine =!= "NOUOFPCAND01") && (Machine =!= "NOUOFPCAND02") && (Machine =!= "NOUOFPCAND03") && (Machine =!= "NOUOFPCAND04") && (Machine =!= "NOUOFPCAND05") && (Machine =!= "NOUOFPCAND06") && (Machine =!= "NOUOFPCAND07") && (Machine =!= "NOUOFPCAND08") && (Machine =!= "nouofpcand09.corp.spc.int") && (Machine =!= "nouofpcand10") && (Machine =!= "nouofpcand11.corp.spc.int") && (Machine =!= "nouofpcand12"))
+##&& \
+##(machine=="SPC182012.corp.spc.int")
+request_memory=2400
+request_disk=450000
+transfer_output_remaps = \
+"doitall.condor = $(Cluster).$(Process).doitall.condor"
+# rename things so we know what cluster and process they come from
+when_to_transfer_output = ON_EXIT_OR_EVICT
+priority=0
+# bring it all back whether or not it succeeds
+##only remove from the queue with exit-code = 0 = it ran.
+#on_exit_remove = (CurrentTime > 0) && (ExitCode == 0)
+## paths for these files need to be relative to final run directory (..../Model_runs/rundir )
+TRANSFER_INPUT_FILES = Start.tar.gz
+TRANSFER_OUTPUT_FILES = End.tar.gz
+queue
