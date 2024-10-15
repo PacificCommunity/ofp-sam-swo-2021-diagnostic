@@ -1,14 +1,14 @@
 #!/bin/sh
 
-#  ------------------------
+# -----------------------------------
 #  PHASE 0 - create initial par file
-#  ------------------------
+# -----------------------------------
 
 mfclo64 swo.frq swo.ini 00.par -makepar
 
-#  ------------------------
+# -----------------------
 #  PHASE 1 - initial par
-#  ------------------------
+# -----------------------
 
 mfclo64 swo.frq 00.par 01.par -file - <<PHASE1
 # Set control phase: keep growth parameters fixed use
@@ -142,9 +142,9 @@ mfclo64 swo.frq 00.par 01.par -file - <<PHASE1
     -16 29 16
 PHASE1
 
-#  ---------
-#   PHASE 2
-#  ---------
+# ---------
+#  PHASE 2
+# ---------
 
 mfclo64 swo.frq 01.par 02.par -file - <<PHASE2
   1 1 1000        # set max. number of function evaluations per phase to 1000
@@ -162,9 +162,9 @@ mfclo64 swo.frq 01.par 02.par -file - <<PHASE2
 
 PHASE2
 
-#  ---------
-#   PHASE 3
-#  ---------
+# ---------
+#  PHASE 3
+# ---------
 
 mfclo64 swo.frq 02.par 03.par -file - <<PHASE3
   2 70 1          # activate parameters for time series variability in regional recruitment distribution
@@ -175,9 +175,9 @@ mfclo64 swo.frq 02.par 03.par -file - <<PHASE3
    -16 45 50000
 PHASE3
 
-#  ---------
-#   PHASE 4
-#  ---------
+# ---------
+#  PHASE 4
+# ---------
 
 mfclo64 swo.frq 03.par 04.par -file - <<PHASE4
   2 68 0          # do not estimate movement
@@ -186,9 +186,9 @@ mfclo64 swo.frq 03.par 04.par -file - <<PHASE4
    -16 45 100000
 PHASE4
 
-#  ---------
-#   PHASE 5
-#  ---------
+# ---------
+#  PHASE 5
+# ---------
 
 mfclo64 swo.frq 04.par 05.par -file - <<PHASE5
   -999 27 0       # estimate seasonal catchability for all fisheries
@@ -197,17 +197,17 @@ mfclo64 swo.frq 04.par 05.par -file - <<PHASE5
    -16 27 1
 PHASE5
 
-#  ---------
-#   PHASE 6
-#  ---------
+# ---------
+#  PHASE 6
+# ---------
 
 mfclo64 swo.frq 05.par 06.par -file - <<PHASE6
   -999 10 0       # Do not estimate time-varying catchability
 PHASE6
 
-#  ---------
-#   PHASE 7
-#  ---------
+# ---------
+#  PHASE 7
+# ---------
 
 mfclo64 swo.frq 06.par 07.par -file - <<PHASE7
 # Estimate average proportion of recruitment coming from each region
@@ -215,9 +215,9 @@ mfclo64 swo.frq 06.par 07.par -file - <<PHASE7
   -100000 2 1
 PHASE7
 
-#  ---------
-#   PHASE 8
-#  ---------
+# ---------
+#  PHASE 8
+# ---------
 
 mfclo64 swo.frq 07.par 08.par -file - <<PHASE8
   1 1 8000       # set max. number of function evaluations per phase to 8000
@@ -241,81 +241,81 @@ mfclo64 swo.frq 07.par 08.par -file - <<PHASE8
 
 PHASE8
 
-# ------------
-#   PHASE 9
-# ------------
+# ---------
+#  PHASE 9
+# ---------
 
 mfclo64 swo.frq 08.par 09.par -file - <<PHASE9
   1 1 10000 # In crease maximum function evaluation to 10000
   1 50 -6        # modify convergence criteria from this phase
 PHASE9
 
-# ------------
-#   PHASE 10
-# ------------
+# ----------
+#  PHASE 10
+# ----------
 
 mfclo64 swo.frq 09.par 10.par -file - <<PHASE10
   1 1 10000 # In crease maximum function evaluation to 10000
   1 50 -6        # modify convergence criteria from this phase
 PHASE10
 
-# ------------
-#   PHASE 11
-# ------------
+# ----------
+#  PHASE 11
+# ----------
 
 mfclo64 swo.frq 10.par 11.par -file - <<PHASE11
   1 1 10000 # In crease maximum function evaluation to 10000
   1 50 -6        # modify convergence criteria from this phase
 PHASE11
 
-# ------------
-#   PHASE 12
-# ------------
+# ----------
+#  PHASE 12
+# ----------
 
 mfclo64 swo.frq 11.par 12.par -file - <<PHASE12
   1 1 10000 # In crease maximum function evaluation to 10000
   1 50 -6        # modify convergence criteria from this phase
 PHASE12
 
-# ------------
-#   PHASE 13
-# ------------
+# ----------
+#  PHASE 13
+# ----------
 
 mfclo64 swo.frq 12.par 13.par -file - <<PHASE13
   1 1 10000 # In crease maximum function evaluation to 10000
   1 50 -6        # modify convergence criteria from this phase
 PHASE13
 
-# ------------
-#   PHASE 14
-# ------------
+# ----------
+#  PHASE 14
+# ----------
 
 mfclo64 swo.frq 13.par 14.par -file - <<PHASE14
   1 1 10000 # In crease maximum function evaluation to 10000
   1 50 -6        # modify convergence criteria from this phase
 PHASE14
 
-# ------------
-#   PHASE 15
-# ------------
+# ----------
+#  PHASE 15
+# ----------
 
 mfclo64 swo.frq 14.par 15.par -file - <<PHASE15
   1 1 10000 # In crease maximum function evaluation to 10000
   1 50 -6        # modify convergence criteria from this phase
 PHASE15
 
-# ------------
-#   PHASE 16
-# ------------
+# ----------
+#  PHASE 16
+# ----------
 
 mfclo64 swo.frq 15.par 16.par -file - <<PHASE16
   1 1 10000 # In crease maximum function evaluation to 10000
   1 50 -6        # modify convergence criteria from this phase
 PHASE16
 
-# ------------
-#   PHASE 17
-# ------------
+# ----------
+#  PHASE 17
+# ----------
 
 mfclo64 swo.frq 16.par junk -switch 2 1 1 1 1 145 3
 mfclo64 swo.frq 16.par junk -switch 2 1 1 1 1 145 4
