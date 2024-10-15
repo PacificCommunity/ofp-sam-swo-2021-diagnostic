@@ -1,40 +1,40 @@
-# 
-# Definition of fisheries 
-# 
-# Number of   Number of   Use generic   Number of     Year1 
-#  Region     Fisheries    diffusion    tag groups 
+#
+# Definition of fisheries
+#
+# Number of   Number of   Use generic   Number of     Year1
+#  Region     Fisheries    diffusion    tag groups
 2    16    1    0    1952    1    0    1    0    6
-# Relative Region Size 
+# Relative Region Size
 1 2.53
 #
-# Region in which each fishery is located 
+# Region in which each fishery is located
 1 1 1 1 1 1 2 2 2 2 2 2 2 1 2 2
 #
-# 
-# Incidence matrix 
-  1
-   
 #
-# 
-# Data flags (for records 1, 0=catch in number; 1=catch in weight) 
+# Incidence matrix
+  1
+
+#
+#
+# Data flags (for records 1, 0=catch in number; 1=catch in weight)
 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-# Season-region flags 
+# Season-region flags
 1 1
-# Number of movements per year 
-4 
-# Weeks in which movement occurs 
+# Number of movements per year
+4
+# Weeks in which movement occurs
 5 17 29 41
-# fishery data 
-# 
-# 
-# Datasets / LFIntervals  LFFirst  LFWidth  LFFactor / WFIntervals  WFFirst  WFWidth 
+# fishery data
+#
+#
+# Datasets / LFIntervals  LFFirst  LFWidth  LFFactor / WFIntervals  WFFirst  WFWidth
 2333      29      30      10      1      62      2      5      1
-# age_nage   age_age1 
-0      -1 
+# age_nage   age_age1
+0      -1
 1952 2 1 1 26 3664 0.001 -1 -1
 1952 5 1 1 25 11608 0.001 -1 -1
 1952 8 1 1 149 15994 0.001 -1 -1

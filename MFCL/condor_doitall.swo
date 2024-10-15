@@ -27,8 +27,8 @@ fi
 #
 if [ ! -f 01.par ]; then
   $MFCL  $FRQ 00.par 01.par -file - <<PHASE1
-# Set control phase: keep growth parameters fixed use  
-      1 32 6          
+# Set control phase: keep growth parameters fixed use
+      1 32 6
       1 16 1          # estimate scalar of length dependent SD
       1 387 1         # Use ADMB parameter scaling consistent with v2070
 # Population scaling
@@ -46,7 +46,7 @@ if [ ! -f 01.par ]; then
       1 400 2 # exclude 2 terminal time period to estimate rec devs
       1 398 1 # geometric mean for parest_flags(400)
 # Steepness
-      2 162 0         # no estimation of steepness 
+      2 162 0         # no estimation of steepness
 # Spawning potential
       2 188 2         # turn on length at maturity
 # Movement
@@ -64,27 +64,27 @@ if [ ! -f 01.par ]; then
 # Selectivity Section
    -999 26 2       # sets age-dependent selectivity option
   # uses cubic spline selectivity for all fleets
-   -999 57 3       
+   -999 57 3
   # default number of nodes used in the cubic spline
-   -999 61 3       
+   -999 61 3
      -3 61 5       # except for fishery 3 which has 5 nodes
      -9 61 5       # except for fishery 9 which has 5 nodes
     -14 61 5
     -15 61 5
     -16 61 5
   # first age class for common terminal selectivity
-   -999 3 16       
+   -999 3 16
   # define non decreasing selectivity
      -9 16 1
     -14 16 1
     -15 16 1
     -16 16 1
-  # define ages for zero selectivity after age defined by ff3       
-     -8 16 2       
+  # define ages for zero selectivity after age defined by ff3
+     -8 16 2
   # Define number of breaks in time block selectivity
-     -4 71 1        
+     -4 71 1
   # Number of age classes starting from zero where selectivity is 0
-     -2 75 1       
+     -2 75 1
      -9 75 6
   # grouping of fisheries with common selectivity
      -1 24 1
@@ -107,7 +107,7 @@ if [ ! -f 01.par ]; then
   # sets penalties for effort deviations
   # negative penalties force effort devs to be zero when catch is unknown
   # higher for longline fisheries where effort is standardized
-   -999 13 1      
+   -999 13 1
      -2 13 1
      -4 13 1
      -7 13 1
@@ -119,9 +119,9 @@ if [ ! -f 01.par ]; then
      -4 66 1
      -7 66 1
      -8 66 1
-    -11 66 1 
+    -11 66 1
 # Catchability Section
-   -999 15 50       # sets penalties for catchability deviations  
+   -999 15 50       # sets penalties for catchability deviations
    # Set grouping of fisheries with common catchability at start of time series
      -1 60 1
      -2 60 2
@@ -264,7 +264,7 @@ if [ ! -f 08.par ]; then
   1 187 1        # Write temporary_tag_report
   1 188 1        # Write ests.rep
   1 189 1        # Write .fit files
-  
+
 PHASE8
 exit
 fi
@@ -369,10 +369,9 @@ fi
 #   PHASE 17
 # ------------
 if [ ! -f junk ]; then
-  $MFCL $FRQ 16.par junk -switch 2 1 1 1 1 145 3 
+  $MFCL $FRQ 16.par junk -switch 2 1 1 1 1 145 3
   $MFCL $FRQ 16.par junk -switch 2 1 1 1 1 145 4
   $MFCL $FRQ 16.par junk -switch 2 1 1 1 1 145 5
   rm junk plot-junk.rep
 exit
 fi
-
